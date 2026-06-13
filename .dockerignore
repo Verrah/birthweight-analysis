@@ -1,0 +1,22 @@
+# Never bake data into the image
+data/
+*.dat
+*.csv
+*.zip
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+.env
+
+# Git
+.git/
+.gitignore
+
+# Outputs
+outputs/
+
+# OS
+.DS_Store
+Thumbs.db

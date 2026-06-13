@@ -1,0 +1,43 @@
+version: "3.9"
+
+services:
+
+  # ── Analysis container ──────────────────────────────────────
+  analysis:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: birthweight_analysis
+    volumes:
+      # Mount local data directory into container at runtime
+      # Your .dat files never go inside the image
+      - ./data:/app/data
+      # Mount outputs so results persist after container stops
+      - ./outputs:/app/outputs
+      # Mount src for live code editing without rebuilding
+      - ./src:/app/src
+    environment:
+      - PYTHONUNBUFFERED=1
+    command: python src/validate.py
+
+  # ── Jupyter notebook server ─────────────────────────────────
+  jupyter:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: birthweight_jupyter
+    ports:
+      - "8888:8888"
+    volumes:
+      - ./data:/app/data
+      - ./outputs:/app/outputs
+      - ./notebooks:/app/notebooks
+      - ./src:/app/src
+    command: >
+      jupyter notebook
+      --ip=0.0.0.0
+      --port=8888
+      --no-browser
+      --allow-root
+      --NotebookApp.token=''
+      --NotebookApp.password=''
