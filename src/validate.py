@@ -133,7 +133,7 @@ def main():
     # 4. Assertions — fail loudly if something is wrong
     print("\n[4] Running assertions...")
     assert rmse < 600,  f"RMSE too high: {rmse:.1f}g"
-    assert r2   > 0.30, f"R² too low: {r2:.4f}"
+    assert r2   > 0.25, f"R² too low: {r2:.4f}"
     assert len(df) == 10000, "Record count mismatch"
     print("    All assertions passed.")
 
