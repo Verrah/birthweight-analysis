@@ -1,0 +1,20 @@
+# Data files (too large for GitHub; never share restricted-use data)
+data/
+*.dat
+*.csv
+*.zip
+
+# Python
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+.env
+
+# R
+.Rhistory
+.RData
+*.Rproj.user/
+
+# OS
+.DS_Store
+Thumbs.db
